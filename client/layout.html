@@ -1,0 +1,12 @@
+<head>
+  <title>F-OAT</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<template name="mainLayout">
+  {{#if currentUser}}
+    {{> nav}}
+  {{/if}}
+  <div class="entrance">
+    {{> yield}}
+  </div>
+</template>

@@ -1,0 +1,89 @@
+/* CSS declarations go here */
+
+html{
+  background: white;
+}
+
+.nav-wrapper{
+  background: #1581c7;
+}
+.entrance {
+  background: white;
+}
+
+.table-container{
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  padding-top: 10%;
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+h2{
+  padding-bottom: 30px;
+}
+
+.content{
+  background: white;
+  height: 100%;
+  width: 100%;
+}
+
+.btn {
+  color:  white ;
+  background-color:  #1581c7 ;
+}
+
+.input-field .prefix.active {
+  color: #1581c7;
+}
+
+.input-field label {
+  color: #1581c7;
+}
+
+.input-field input[type=text]:focus + label {
+  color: #1581c7;
+
+}
+
+.btn:hover{
+  background-color: #1591d7;
+  color: white;
+}
+
+
+input-field input[type=text]:focus {
+  border-bottom: 1px solid #1581c7;
+  box-shadow: 0 1px 0 0 #1581c7;
+}
+
+.btn{
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  width: 200px;
+}
+.centered {
+  margin: 15% auto;
+  background: white;
+  width: 60%;
+  color: black;
+
+}
+
+.hidden {
+  visibility: collapse;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+    
