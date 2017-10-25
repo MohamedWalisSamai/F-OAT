@@ -4,9 +4,26 @@
       <div class="row">
         <form class="col s12">
           <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s6 {{errorClass 'name'}}">
               <input type="text" id="projectName" class="validate projectName" />
               <label for="projectName">Name</label>
+              <span class="red-text">{{errorMessage 'name'}}</span>
+            </div>
+            <div class="input-field col s6 {{errorClass 'url'}}">
+              <input type="text" id="url" class="validate url"/>
+              <label for="url">URL of the video</label>
+              <span  class="red-text">{{errorMessage 'url'}}</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="file-field input-field col s6 offset-s6">
+              <div class="btn col s4">
+                <span>File</span>
+                <input type="file" id="selectedFile">
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" type="text" placeholder="or upload a video">
+              </div>
             </div>
           </div>
           <div class="row">
