@@ -5,9 +5,7 @@ import './login.html';
 
 
 Template.login.helpers({
-  counter() {
-    return Template.instance().counter.get();
-  },
+
 });
 
 Template.login.events({

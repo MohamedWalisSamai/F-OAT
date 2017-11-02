@@ -26,9 +26,16 @@ materialize:materialize
 accounts-base@1.3.4
 accounts-password@1.4.0
 ostrio:logger
+<<<<<<< HEAD
+=======
+session
+>>>>>>> 961a58efb612488181a0aa4c8ad1abcaad9037a5
 meteorhacks:npm
 
 
 npm-container
 peerlibrary:xml2js
+<<<<<<< HEAD
 session
+=======
+>>>>>>> 961a58efb612488181a0aa4c8ad1abcaad9037a5
