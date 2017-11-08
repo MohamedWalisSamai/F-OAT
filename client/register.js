@@ -57,7 +57,6 @@ Template.register.events({
           alert(err.reason);
         }else{
           log.info("new user create",_newUsr,_newUsr._Id);
-          alert("good");
           Router.go("/");
         }
       });
