@@ -1,0 +1,35 @@
+F-OAT
+
+Filmic Online Analysis Tool
+
+Characteristics
+
+  -Simple interface to initiate automatic analysis
+  -Realtime data visualization
+  -Advanced tools for manual annotation
+  -Public domain movies or custom uploaded/hosted file
+
+Benefits
+
+  -Allows anybody to analyse movies
+  -Create movie database for large scale research
+
+
+Advantages
+
+  -Extensible automatic analysis
+  -Shared analysis
+  -Manual annotations and correction
+
+State of the art
+
+  insight
+  opencv
+  www.cinemetrics.lv
+  https://graphics.stanford.edu/~kbreeden/gazedata.html
+  «how big data is rewriting Hollywood movie scripts»
+  cinemetrics.fredericbrodbeck.de
+  www.iri.centrepompidou.fr/outils/lignes-de-temps/
+  movie-maps.net
+  visual.ly/big-fluctuations
+  scripthreads.org
