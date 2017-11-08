@@ -3,11 +3,16 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import {Projects} from '../lib/collections/Project.js';
 import './dashboard.html';
 
+Meteor.subscribe('projects');
+
 Template.dashboard.helpers({
   projects(){
     return Projects.find({owner: Meteor.user().username});
   }
 });
+
+
+
 
 Template.dashboard.events({
 

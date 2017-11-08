@@ -45,7 +45,9 @@ Template.newproject.events({
     var project = {
       name: _projectName,
       owner: ownerId.username,
-      url: _url
+      url: _url,
+      participants:[],
+      notifications:[]
     };
 
     //We verify the name and the url of the project (not null and not already used)

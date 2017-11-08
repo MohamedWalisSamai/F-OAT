@@ -28,7 +28,5 @@ accounts-password@1.4.0
 ostrio:logger
 session
 meteorhacks:npm
-
-
 npm-container
 peerlibrary:xml2js
