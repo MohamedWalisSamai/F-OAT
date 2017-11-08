@@ -1,20 +1,20 @@
 # F-OAT
 Filmic Online Analysis Tool
 
-##Characteristics
+## Characteristics
 
 - Simple interface to initiate automatic analysis
 - Realtime data visualization
 - Advanced tools for manual annotation
 - Public domain movies or custom uploaded/hosted file
 
-##Benefits
+## Benefits
 
 - Allows anybody to analyse movies
 - Create movie database for large scale research
 
 
-##Advantages
+## Advantages
 
 - Extensible automatic analysis
 - Shared analysis
