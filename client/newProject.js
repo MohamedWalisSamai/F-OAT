@@ -77,13 +77,14 @@ Template.newproject.events({
               }
               else{
                 alert("Your file will be uploaded. Uploading will take minutes to hours. You will be notified when the upload is done.")
-                Router.go("/");
+      
               }
             });
+
           }
 
           reader.readAsArrayBuffer(_projectFile); //read the file as arraybuffer
-
+          Router.go("/");
         }
         else{
           Router.go("/");
