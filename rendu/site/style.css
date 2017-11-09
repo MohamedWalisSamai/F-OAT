@@ -1,0 +1,103 @@
+@font-face {
+  font-family:swiss;
+  src: url('swiss.ttf');
+}
+
+body
+{
+  margin: 0px;
+  align-items: center;
+  background-image: url("background.jpg");
+  background-position: bottom;
+  background-size: contain;
+  background-attachment: fixed;
+}
+
+div{
+  margin:2vw;
+  margin-left:20vw;
+  margin-right:20vw;
+  border-radius: 1vw;
+
+  background-image: url("background2.jpg");
+  background-position: bottom;
+  background-size: contain;
+  background-attachment: fixed;
+
+  color:white;
+  font-size: 1.5vw;
+  text-shadow: 0 0 0.5vw #000;
+}
+
+
+
+.title{
+  margin:0;
+  text-align: center;
+  background-size: contain;
+  background-attachment: fixed;
+  background-position: bottom;
+  background-image: url("background3.jpg");
+}
+
+.halo{
+  box-shadow: 0 0 10vw #fff4;
+}
+
+
+h1{
+  margin:1vw;
+
+  text-align: center;
+  color:white;
+  font-size: 5vw;
+  text-shadow: 0 0 2vw #000;
+}
+
+h2{
+  margin-left: 2vw;
+  margin-right: 2vw;
+  text-align: center;
+  color:white;
+  font-size: 2vw;
+  text-shadow: 0 0 2vw #000;
+}
+
+p{
+  margin-left: 2vw;
+  margin-right: 2vw;
+  text-align: justify;
+  font-size: 1.5vw;
+  text-shadow: 0 0 2vw #000;
+}
+
+li{
+  margin-top: 1vw;
+  margin-left: 2vw;
+  text-shadow: 0 0 1vw #000;
+}
+
+ul{
+  margin-top: 4vh;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 0;
+  text-align: center;
+  vertical-align: middle;
+  transform: translateX(-20px);
+}
+
+a{
+  vertical-align: middle;
+  color:black;
+  text-decoration: none;
+  font-family:swiss;
+  background-color: #fff;
+}
+
+img{
+    margin-top: 4vw;
+    margin-bottom: 4vw;
+    margin-left: 15%;
+    width: 70%;
+}
