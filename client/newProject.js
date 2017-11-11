@@ -57,7 +57,7 @@ Template.newproject.events({
       return Session.set('postSubmitErrors',errors);
     }
 
-    Projects.insert(project,(err)=>{
+    Meteor.call('saveDocument', project, function(err, res){
       if(err){
         alert("error insert");
       }else{
@@ -68,22 +68,26 @@ Template.newproject.events({
           //When reading file is done
           reader.onload = function(event){
 
-            var buffer =  new Uint8Array(reader.result) //convert to binary
+            //var buffer =  new Uint8Array(reader.result) //convert to binary
 
+            var buffer = reader.result;
             //Call a method from project.js on server side
             Meteor.call('createFile', {project,buffer}, function(error, result){
               if(error){
                 alert(error.reason);
               }
               else{
-                alert("Your file will be uploaded. Uploading will take minutes to hours. You will be notified when the upload is done.")
-                Router.go("/");
+                //Create a notification if the file has been uploaded
+                Projects.update({
+                  _id: res
+                }, {
+                  $push: {notifications: {date: new Date().toString(), value: "Your file "+project.url+" has been uploaded."}}
+                });
               }
             });
           }
-
-          reader.readAsArrayBuffer(_projectFile); //read the file as arraybuffer
-
+          reader.readAsDataURL(_projectFile); //read the file as base64 dataURL
+          Router.go("/");
         }
         else{
           Router.go("/");
@@ -91,7 +95,6 @@ Template.newproject.events({
       }
     });
   }
-
 });
 
 
