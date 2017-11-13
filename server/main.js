@@ -29,7 +29,7 @@ Meteor.methods({
   */
   "getXml": function(name){
 
-    var ret =fs.readFileSync("/home/boby/Documents/M1/F-OAT/server/xmlFiles/toto.xml","utf8");
+    var ret =fs.readFileSync(name,"utf8");
     return {data:ret};
 
 
