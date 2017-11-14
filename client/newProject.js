@@ -13,7 +13,10 @@ Template.newproject.helpers({
   },
   errorClass: function(field){
     return !!Session.get('postSubmitErrors')[field] ? 'has-error' : '';
-  }
+  },
+    users(){
+        return Meteor.users.find({});
+    }
 });
 
 Template.newproject.events({
@@ -24,6 +27,11 @@ Template.newproject.events({
     var _projectUrl = $('.url').val();
 
     var _projectFile = $('#selectedFile')[0].files[0];
+
+      /*var _participant = $('.participant').val();*/
+      var _participant = $('#participant').val();
+
+      console.log(_participant);
 
     var _url = 'error';
 
@@ -46,7 +54,7 @@ Template.newproject.events({
       name: _projectName,
       owner: ownerId.username,
       url: _url,
-      participants:[],
+      participants:_participant,
       notifications:[]
     };
 
