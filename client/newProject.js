@@ -13,6 +13,10 @@ Template.newproject.helpers({
   },
   errorClass: function(field){
     return !!Session.get('postSubmitErrors')[field] ? 'has-error' : '';
+  },
+    users(){
+    console.log(Meteor.users.find({}).count());
+      return Meteor.users.find({});
   }
 });
 

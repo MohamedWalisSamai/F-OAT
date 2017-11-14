@@ -6,9 +6,6 @@ Meteor.startup(() => {
   // code to run on server at startup
 });
 
-Meteor.publish('projects', function() {
-  return Projects.find({owner: Meteor.user().username});
-});
 
 
 Meteor.methods({
