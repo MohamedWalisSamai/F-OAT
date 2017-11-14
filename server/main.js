@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import "../lib/collections/Project.js";
 const fs = require('fs');
+export const xmlPath = "/tmp/";
 
 Meteor.startup(() => {
   // code to run on server at startup
@@ -23,13 +24,12 @@ Meteor.methods({
 
   },
 
-
   /**
     send the string wich represent the xml file name
   */
   "getXml": function(name){
 
-    var ret =fs.readFileSync("/home/boby/Documents/M1/F-OAT/server/xmlFiles/toto.xml","utf8");
+    var ret =fs.readFileSync(xmlPath+name+".xml","utf8");
     return {data:ret};
 
 
