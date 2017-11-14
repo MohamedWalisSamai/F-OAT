@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bc9e457b-a808-4454-8b71-0a9d709e18dc" name="Default" comment="" />
+    <list default="true" id="bc9e457b-a808-4454-8b71-0a9d709e18dc" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/dashboard.js" afterPath="$PROJECT_DIR$/client/dashboard.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/newProject.html" afterPath="$PROJECT_DIR$/client/newProject.html" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -69,11 +72,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="newProject.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="newProject.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/newProject.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+            <state relative-caret-position="288">
+              <caret line="22" column="25" lean-forward="true" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -140,19 +143,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dashboard.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="dashboard.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/dashboard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="10" column="3" lean-forward="false" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+            <state relative-caret-position="198">
+              <caret line="12" column="3" lean-forward="false" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
-                <marker date="1510663228850" expanded="true" signature="310:319" ph="{...}" />
-                <marker date="1510663228850" expanded="true" signature="310:317" ph="{...}" />
-                <marker date="1510663228850" expanded="true" signature="352:624" ph="{...}" />
-                <marker date="1510663228850" expanded="true" signature="390:622" ph="{...}" />
-                <marker date="1510663228850" expanded="true" signature="565:617" ph="{...}" />
-                <marker date="1510663228850" expanded="true" signature="580:611" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -178,9 +175,9 @@
         <option value="$PROJECT_DIR$/client/main.css" />
         <option value="$PROJECT_DIR$/client/newProject.js" />
         <option value="$PROJECT_DIR$/server/main.js" />
-        <option value="$PROJECT_DIR$/client/dashboard.js" />
         <option value="$PROJECT_DIR$/rendu/site/index.html" />
         <option value="$PROJECT_DIR$/client/newProject.html" />
+        <option value="$PROJECT_DIR$/client/dashboard.js" />
       </list>
     </option>
   </component>
@@ -299,12 +296,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1510650933595</updated>
-      <workItem from="1510650936981" duration="9712000" />
+      <workItem from="1510650936981" duration="9931000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9712000" />
+    <option name="totallyTimeSpent" value="9931000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
@@ -488,22 +485,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/dashboard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="10" column="3" lean-forward="false" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-            <marker date="1510663228850" expanded="true" signature="310:319" ph="{...}" />
-            <marker date="1510663228850" expanded="true" signature="310:317" ph="{...}" />
-            <marker date="1510663228850" expanded="true" signature="352:624" ph="{...}" />
-            <marker date="1510663228850" expanded="true" signature="390:622" ph="{...}" />
-            <marker date="1510663228850" expanded="true" signature="565:617" ph="{...}" />
-            <marker date="1510663228850" expanded="true" signature="580:611" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/dashboard.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="232">
@@ -514,9 +495,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/newProject.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+        <state relative-caret-position="288">
+          <caret line="22" column="25" lean-forward="true" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/dashboard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="12" column="3" lean-forward="false" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

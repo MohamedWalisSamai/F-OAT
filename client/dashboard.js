@@ -6,9 +6,10 @@ import './dashboard.html';
 Meteor.subscribe('projects');
 
 Template.dashboard.helpers({
-  projects(){
-    return Projects.find({owner: Meteor.user().username});
-  }
+    projects(){
+        console.log(Projects.find({owner: Meteor.user().username}));
+        return Projects.find({ $or: [ { owner: Meteor.user().username }, { participants: Meteor.user().username } ] });
+    }
 });
 
 
