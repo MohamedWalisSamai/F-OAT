@@ -15,6 +15,14 @@
               <span  class="red-text">{{errorMessage 'url'}}</span>
             </div>
           </div>
+        <div class="row">
+            <label for="select">Participant</label>
+            <select multiple="multiple" size="5" class="select" id="participant">
+                {{#each users}}
+                    <option value="{{username}}">{{username}}</option>
+                {{/each}}
+            </select>
+        </div>
           <div class="row">
             <div class="file-field input-field col s6 offset-s6">
               <div class="btn col s4">
