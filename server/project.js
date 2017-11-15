@@ -4,7 +4,7 @@ Meteor.methods({
   createFile: function({project, buffer}){
     //Write the file on server
     var fs = Npm.require("fs");
-    var dir = "/tmp/"+project.owner+"_"+project.name;
+    var dir = "/tmp/"+project._id;
 
     //Create a directory for the project if it doesn't exist
     if (!fs.existsSync(dir)){

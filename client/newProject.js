@@ -59,7 +59,7 @@ Template.newproject.events({
 
     Meteor.call('saveDocument', project, function(err, res){
       if(err){
-        alert("error insert");
+        alert("error insert"+err.reason);
       }else{
         if(_projectFile){
           //Get the data of the file

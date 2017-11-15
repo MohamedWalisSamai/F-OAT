@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import "../lib/collections/Project.js";
+import {Projects } from "../lib/collections/Project.js";
 const fs = require('fs');
 export const xmlPath = "/tmp/";
 
@@ -29,11 +29,7 @@ Meteor.methods({
   */
   "getXml": function(name){
 
-<<<<<<< HEAD
-    var ret =fs.readFileSync(xmlPath+name+".xml","utf8");
-=======
     var ret =fs.readFileSync(name,"utf8");
->>>>>>> b1d2404e411c03f97d6a1eac65c457607a3ebeb1
     return {data:ret};
 
 

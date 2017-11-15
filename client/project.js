@@ -4,10 +4,6 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import './project.html';
 
 Template.project.onRendered(()=>{
-<<<<<<< HEAD
-
-});
-=======
   var xml;
   Meteor.call("getXml","/workspace/meteor/F-OAT/server/xmlFiles/mix_format.xml",(err,result)=>{
     if(err){
@@ -16,7 +12,6 @@ Template.project.onRendered(()=>{
       Session.set('xmlDoc', result.data)
   }});
 })
->>>>>>> b1d2404e411c03f97d6a1eac65c457607a3ebeb1
 
 Template.project.events({
 });
