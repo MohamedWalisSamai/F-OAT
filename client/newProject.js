@@ -15,7 +15,8 @@ Template.newproject.helpers({
     return !!Session.get('postSubmitErrors')[field] ? 'has-error' : '';
   },
     users(){
-        return Meteor.users.find({});
+        var regexp = new RegExp(Session.get('search/keyword'), 'i');
+        return Meteor.users.find({username: regexp});
     }
 });
 
@@ -102,6 +103,9 @@ Template.newproject.events({
         }
       }
     });
+  },
+  'keyup #search': function(event) {
+      Session.set('search/keyword', event.target.value);
   }
 });
 

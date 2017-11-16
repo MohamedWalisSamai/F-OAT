@@ -15,6 +15,16 @@
               <span  class="red-text">{{errorMessage 'url'}}</span>
             </div>
           </div>
+            <!--<div class="input-field col s6">
+                <input type="text" id="search"/>
+                <label for="search">Search participant</label>
+            </div>-->
+            <div class="row">
+                <div class="input-field col s6 {{errorClass 'url'}}">
+                    <input type="text" id="search">
+                    <label for="search">Search</label>
+                </div>
+            </div>
         <div class="row">
             <label for="select">Participant</label>
             <select multiple="multiple" size="5" class="select" id="participant">
