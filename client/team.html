@@ -1,0 +1,32 @@
+<template name="team">
+  <div class="content">
+    <div class="table-container">
+      <h2 class="blue-text text-darken-3">Liste des participants</h2>
+      <table class="highlight">
+        <thead>
+          <tr>
+            <td>Name</td>
+            <td>Right</td>
+            <td>Actions</td>
+          </tr>
+        </thead>
+        {{#with Project}}
+        <tbody>
+          <tr>
+            <td>{{Owner}}</td>
+            <td>Owner</td>
+            <td></td>
+          </tr>        
+          {{#each Project.participants}}
+          <tr>
+            <td>{{username}}</td>
+            <td>{{right}}</td>
+            <td></td>
+          </tr>
+          {{/each}}
+        </tbody>
+        {{/with}}
+      </table>
+    </div>
+  </div>
+</template>

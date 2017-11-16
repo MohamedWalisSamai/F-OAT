@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
-import "../lib/collections/Project.js";
+import {Projects } from "../lib/collections/Project.js";
 const fs = require('fs');
+export const xmlPath = "/tmp/";
 
 Meteor.startup(() => {
   // code to run on server at startup
@@ -19,7 +20,6 @@ Meteor.methods({
     return false;
 
   },
-
 
   /**
     send the string wich represent the xml file name
