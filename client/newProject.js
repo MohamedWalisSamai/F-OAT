@@ -4,15 +4,15 @@ import {Projects} from '../lib/collections/Project.js';
 import './newProject.html';
 
 Template.newproject.onCreated(function(){
-  Session.set('postSubmitErrors',{});
+  Session.set('projectSubmitErrors',{});
 });
 
 Template.newproject.helpers({
   errorMessage: function(field){
-    return Session.get('postSubmitErrors')[field];
+    return Session.get('projectSubmitErrors')[field];
   },
   errorClass: function(field){
-    return !!Session.get('postSubmitErrors')[field] ? 'has-error' : '';
+    return !!Session.get('projectSubmitErrors')[field] ? 'has-error' : '';
   }
 });
 
@@ -54,7 +54,7 @@ Template.newproject.events({
 
     var errors = validateProject(project);
     if(errors.name || errors.url || errors.file){
-      return Session.set('postSubmitErrors',errors);
+      return Session.set('projectSubmitErrors',errors);
     }
 
     Meteor.call('saveDocument', project, function(err, res){

@@ -3,6 +3,20 @@ import { ReactiveVar } from 'meteor/reactive-var';
 
 import './register.html';
 
+Template.register.onCreated(function(){
+  Session.set('userSubmitErrors',{});
+});
+
+Template.register.helpers({
+  errorMessage: function(field){
+    return Session.get('userSubmitErrors')[field];
+  },
+  errorClass: function(field){
+    return !!Session.get('userSubmitErrors')[field] ? 'has-error' : '';
+  }
+});
+
+
 validate = function(){
 
 
@@ -31,37 +45,20 @@ Template.register.events({
 
     }
 
-    alert("name "+_name);
-    Meteor.call("userNameExist",_name,(err,result)=>{
-      if(err){
-        alert(err)
-      }
-      if(result){
-
-        ok = false;
-      }
-    });
-
-    Meteor.call("mailExist" , _mail,(err,result)=>{
-      if(err){
-        alert(err);
-      }
-      if(result){
-        ok =false;
-      }
-    });
-
-    if(ok){
-      Accounts.createUser(_newUsr , (err)=>{
-        if(err){
-          alert(err.reason);
-        }else{
-          log.info("new user create",_newUsr,_newUsr._Id);
-          Router.go("/");
-        }
-      });
+    var errors = validateUser(_newUsr);
+    console.log("test");
+    if(errors.username || errors.email || errors.password){
+      return Session.set('userSubmitErrors',errors);
     }
-  }
 
+    Accounts.createUser(_newUsr , (err)=>{
+      if(err){
+        alert(err.reason);
+      }else{
+        log.info("new user create",_newUsr,_newUsr._Id);
+        Router.go("/");
+      }
+    });
+  }
 
 });
