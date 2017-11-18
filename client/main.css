@@ -86,4 +86,9 @@ body {
 main {
   flex: 1 0 auto;
 }
+
+.select{
+  display: block;
+  width: 400px;
+}
     
