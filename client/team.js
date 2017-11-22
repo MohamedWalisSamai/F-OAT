@@ -38,7 +38,7 @@ Template.team.events({
   },
 
   /**
-    Add a coworker to the team
+    Add a cowozrker to the team
   */
   'click .newCoworker' (event,instance){
 
