@@ -3,9 +3,9 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import {Projects} from '../lib/collections/Project.js';
 import './dashboard.html';
 
-Meteor.subscribe('projects');
 
 Template.dashboard.helpers({
+
   projects(){
     return Projects.find({ $or: [ { owner: Meteor.user().username }, { "participants.username": Meteor.user().username } ] });
   },

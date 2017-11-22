@@ -7,16 +7,13 @@ Meteor.startup(() => {
   // code to run on server at startup
 });
 
-Meteor.publish('projects', function() {
-  return Projects.find({owner: Meteor.user().username});
-});
 
 
 Meteor.methods({
 
   "userNameExist" :function(_userName){
 
-    result =  Meteor.users.find({username: _userName});
+    result =  Meteor.users.findOne({username: _userName});
     if(result){
       return result.username;
     }
@@ -36,11 +33,11 @@ Meteor.methods({
   },
 
   /**
-  *Verifiy if mail is already use by a user
+  *Verify if mail is already used by a user
   **/
 
   "mailExist" : function(_mail){
-    result = Meteor.users.find({mail: _mail});
+    result = Meteor.users.findOne({"emails.0.address": _mail});
 
     if(result){
       return true;
