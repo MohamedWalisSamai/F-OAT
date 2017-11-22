@@ -24,5 +24,9 @@ Meteor.methods({
   //Function that insert a project in db and returns the id of the inserted project
   saveDocument: function(project){
     return Projects.insert(project);
+  },
+
+  changeRight: (_id,username,newRight)=>{
+    console.log("COucou!!");
   }
 });

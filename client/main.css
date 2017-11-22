@@ -30,34 +30,8 @@ h2{
   width: 100%;
 }
 
-.btn {
-  color:  white ;
-  background-color:  #1581c7 ;
-}
-
-.input-field .prefix.active {
-  color: #1581c7;
-}
-
-.input-field label {
-  color: #1581c7;
-}
-
-.input-field input[type=text]:focus + label {
-  color: #1581c7;
-
-}
-
-.btn:hover{
-  background-color: #1591d7;
-  color: white;
-}
 
 
-input-field input[type=text]:focus {
-  border-bottom: 1px solid #1581c7;
-  box-shadow: 0 1px 0 0 #1581c7;
-}
 
 .btn{
   display: block;
@@ -86,4 +60,3 @@ body {
 main {
   flex: 1 0 auto;
 }
-    
