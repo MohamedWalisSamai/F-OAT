@@ -7,8 +7,7 @@ import './dashboard.html';
 Template.dashboard.helpers({
 
   projects(){
-    console.log(Projects.find({owner: Meteor.user().username}));
-    return Projects.find({ $or: [ { owner: Meteor.user().username }, { participants: Meteor.user().username } ] });
+    return Projects.find({ $or: [ { owner: Meteor.user().username }, { "participants.username": Meteor.user().username } ] });
   },
   isOwner(id){
     var project = Projects.findOne(id);
