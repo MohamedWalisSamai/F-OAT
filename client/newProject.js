@@ -8,16 +8,12 @@ Template.newproject.onCreated(function(){
 });
 
 Template.newproject.helpers({
-    errorMessage: function(field){
-        return Session.get('postSubmitErrors')[field];
-    },
-    errorClass: function(field){
-        return !!Session.get('postSubmitErrors')[field] ? 'has-error' : '';
-    },
-    users(){
-        var regexp = new RegExp(Session.get('search/keyword'), 'i');
-        return Meteor.users.find({username: regexp});
-    }
+  errorMessage: function(field){
+    return Session.get('postSubmitErrors')[field];
+  },
+  errorClass: function(field){
+    return !!Session.get('pos tSubmitErrors')[field] ? 'has-error' : '';
+  }
 });
 
 Template.newproject.events({
