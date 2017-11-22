@@ -4,7 +4,7 @@ Meteor.methods({
   createFile: function({project, buffer}){
     //Write the file on server
     var fs = Npm.require("fs");
-    var dir = "/tmp/"+project.owner+"_"+project.name;
+    var dir = "/tmp/"+project._id;
 
     //Create a directory for the project if it doesn't exist
     if (!fs.existsSync(dir)){
@@ -24,5 +24,9 @@ Meteor.methods({
   //Function that insert a project in db and returns the id of the inserted project
   saveDocument: function(project){
     return Projects.insert(project);
+  },
+
+  changeRight: (_id,username,newRight)=>{
+    console.log("COucou!!");
   }
 });

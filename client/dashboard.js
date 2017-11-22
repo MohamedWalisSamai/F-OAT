@@ -3,11 +3,22 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import {Projects} from '../lib/collections/Project.js';
 import './dashboard.html';
 
-Meteor.subscribe('projects');
 
 Template.dashboard.helpers({
+
   projects(){
-    return Projects.find({owner: Meteor.user().username});
+    return Projects.find({ $or: [ { owner: Meteor.user().username }, { "participants.username": Meteor.user().username } ] });
+  },
+  isOwner(id){
+    var project = Projects.findOne(id);
+    if(project){
+      console.log(project);
+      if(project.owner == Meteor.user().username){
+        return true;
+      }
+    }
+    return false;
+
   }
 });
 
