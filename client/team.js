@@ -38,7 +38,7 @@ Template.team.events({
   },
 
   /**
-    Add a cowoerker to the team
+    Add a coworker to the team
   */
   'click .newCoworker' (event,instance){
 
@@ -51,6 +51,7 @@ Template.team.events({
         alert(err.reason);
       }
       else{
+
         Projects.update({_id : Router.current().params._id }, {$push:{ participants: {username: newCoworker_name,right: newCoworker_right}}});
 
 
