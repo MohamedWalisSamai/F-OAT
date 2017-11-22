@@ -35,7 +35,28 @@ Template.team.events({
         alert(error.reason);
       }
     })
-  }
+  },
+
+  /**
+    Add a cowoerker to the team
+  */
+  'click .newCoworker' (event,instance){
+
+    var newCoworker_name = $('.newCoworker_name').val();
+    var newCoworker_right = $('select.newCoworkerRight').val();
+    alert("toto");
+    Meteor.call("userNameExist",newCoworker_name,(err)=>{
+      alert("tuc");
+      if(err){
+        alert(err.reason);
+      }
+      else{
+        Projects.update({_id : Router.current().params._id }, {$push:{ participants: {username: newCoworker_name,right: newCoworker_right}}});
+
+
+      }
+    });
+  },
 });
 
 
