@@ -3,25 +3,6 @@ import { ReactiveVar } from 'meteor/reactive-var';
 
 import './register.html';
 
-Template.register.onCreated(function(){
-  Session.set('userSubmitErrors',{});
-});
-
-Template.register.helpers({
-  errorMessage: function(field){
-    return Session.get('userSubmitErrors')[field];
-  },
-  errorClass: function(field){
-    return !!Session.get('userSubmitErrors')[field] ? 'has-error' : '';
-  }
-});
-
-
-validate = function(){
-
-
-
-}
 
 Template.register.events({
 
@@ -45,15 +26,10 @@ Template.register.events({
 
     }
 
-    var errors = validateUser(_newUsr);
-    console.log("test");
-    if(errors.username || errors.email || errors.password){
-      return Session.set('userSubmitErrors',errors);
-    }
-
+    //User validation is done on server/accounts.js in method Accounts.validateNewUser()
     Accounts.createUser(_newUsr , (err)=>{
       if(err){
-        alert(err.reason);
+        throwError(err.reason);
       }else{
         log.info("new user create",_newUsr,_newUsr._Id);
         Router.go("/");
