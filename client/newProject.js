@@ -13,7 +13,11 @@ Template.newproject.helpers({
   },
   errorClass: function(field){
     return !!Session.get('pos tSubmitErrors')[field] ? 'has-error' : '';
-  }
+  },
+     users(){
+        var regexp = new RegExp(Session.get('search/keyword'), 'i');
+        return Meteor.users.find({username: regexp});
+     }
 });
 
 Template.newproject.events({
