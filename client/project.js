@@ -19,8 +19,14 @@ Template.project.events({
 Template.project.helpers({
 
   test(){
+    // N'ayez pas peur de supprimer les lignes suivantes
     var parser = new Parser(Session.get('xmlDoc'))
     parser.getTimelineData()
+    parser.getFrames(3000)
+    parser.getShotFrames(3000)
+    var id = $(parser.getFramesActors()[0]).attr('refId')
+    parser.getActor(id)
+    parser.getNbFrames()
   }
 
 });
