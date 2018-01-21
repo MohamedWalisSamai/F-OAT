@@ -104,6 +104,11 @@ Template.newproject.events({
                     Router.go("/");
                 }
                 else{
+                    Meteor.call('createXMLFile',project,function(error,result){
+                      if(error){
+                        alert(error.reason);
+                      }
+                    });
                     Router.go("/");
                 }
             }
