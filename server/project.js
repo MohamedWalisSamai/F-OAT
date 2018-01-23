@@ -26,7 +26,38 @@ Meteor.methods({
     return Projects.insert(project);
   },
 
-  changeRight: (_id,username,newRight)=>{
-    console.log("COucou!!");
+  /*
+    Change the right of an user for a project
+
+    param _id : the id of the project
+    param username : the user to change right
+    param newRight : the new right for the user
+  */
+  changeRight: (_projectId,_username,_newRight)=>{
+
+    var project = Projects.findOne(_projectId);
+    if(!project){
+      throw Error("Invalid project id");
+    }
+    if (project.participants.filter(e => e.username === _username).length == 1) {
+
+      if(_newRight === "Owner"){//change owner the previous owner get write right
+        var previousOwner = project.owner;
+        Projects.update({_id : _projectId }, {$pull:{ participants: {username: _username}}});
+        Projects.update({_id : _projectId },{owner: _username});
+        Projects.update({_id : _projectId }, {$push:{ participants: {username: previousOwner,right: "Write"}}});
+
+
+
+      }else{
+        Projects.update({_id: _projectId ,"participants.username": _username},{$set: {"participants.$.right":_newRight}})
+        console.log(project.participants);
+      }
+    }else{
+      console.log("fuck");
+    }
+    //db.projects.update({_id: "M3MMxWwzMM8ckSdDt","participants.username": "moi"},{$set: {"participants.$.right":"READ"}})
+
+
   }
 });
