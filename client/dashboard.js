@@ -22,20 +22,19 @@ Template.dashboard.helpers({
   }
 });
 
-
-
-
 Template.dashboard.events({
 
-  "click .remove" (event, instance){
+  'click .remove' (event, instance){
     var elm = event.target;
-    var test = elm.getAttribute('id');
-    console.log(event.target);
     var $elm = $(elm);
     Projects.remove({_id: $elm.attr('name')},(err)=>{
       if(err){
         alert(error);
       }
     })
-  }
+  },
+  'click .exit' (event, instance){
+    Meteor.call('removeParticipants',event.target.getAttribute('name'),Meteor.user().username);
+
+  },
 })

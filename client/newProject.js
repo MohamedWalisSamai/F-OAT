@@ -36,7 +36,7 @@ Template.newproject.events({
 
         for(var i=0; i<_participant.length;i++){
           _participant2.push({username: _participant[i],
-          rigth: 'Read'});
+          right: 'Read'});
         }
 
         var _url = 'error';

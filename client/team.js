@@ -30,8 +30,12 @@ Template.team.events({
     var $buttonEvent = $(event.target);
     var newRight = $buttonEvent.closest('tr').find('select').val();
     Meteor.call('changeRight',Router.current().params._id,this.username,newRight,(error,result)=>{
+      alert(result);
       if(error){
         alert(error.reason);
+      }else if(result === 2){
+        Router.go("/")
+
       }
     })
   },
@@ -43,7 +47,6 @@ Template.team.events({
 
     var newCoworker_name = $('.newCoworker_name').val();
     var newCoworker_right = $('select.newCoworkerRight').val();
-
     if(!newCoworker_name){
       $('#name').addClass("invalid");
     }else{
@@ -53,7 +56,6 @@ Template.team.events({
           alert(err.reason);
         }
         else{
-
           Projects.update({_id : Router.current().params._id }, {$push:{ participants: {username: newCoworker_name,right: newCoworker_right}}});
         }
       });
