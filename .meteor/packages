@@ -30,3 +30,4 @@ session@1.1.7
 meteorhacks:npm
 npm-container
 peerlibrary:xml2js
+npm-bcrypt

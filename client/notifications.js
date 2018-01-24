@@ -4,7 +4,7 @@ Template.notifications.helpers({
   }
 });
 
-Template.notification.event({
+Template.notification.events({
     //Remove the notification from the notification list.
     'click #read'(event,instance){
       event.preventDefault();
