@@ -17,46 +17,49 @@ Template.team.onRendered(function(){
 Template.team.events({
 
   /**
-    Remove a participants of the team
+  Remove a participants of the team
   */
   'click .delete' (event,instance){
     Projects.update({_id : Router.current().params._id }, {$pull:{ participants: {username: this.username}}});
   },
 
   /**
-    Update the right of a participant of the team
+  Update the right of a participant of the team
   */
   'click .rightChange' (event,instance){
-    alert(toto.owner);
     var $buttonEvent = $(event.target);
     var newRight = $buttonEvent.closest('tr').find('select').val();
     Meteor.call('changeRight',Router.current().params._id,this.username,newRight,(error,result)=>{
+      alert(result);
       if(error){
         alert(error.reason);
+      }else if(result === 2){
+        Router.go("/")
+
       }
     })
   },
 
   /**
-    Add a cowozrker to the team
+  Add a coworker to the team
   */
   'click .newCoworker' (event,instance){
 
     var newCoworker_name = $('.newCoworker_name').val();
     var newCoworker_right = $('select.newCoworkerRight').val();
-    alert("toto");
-    Meteor.call("userNameExist",newCoworker_name,(err)=>{
-      alert("tuc");
-      if(err){
-        alert(err.reason);
-      }
-      else{
-
-        Projects.update({_id : Router.current().params._id }, {$push:{ participants: {username: newCoworker_name,right: newCoworker_right}}});
-
-
-      }
-    });
+    if(!newCoworker_name){
+      $('#name').addClass("invalid");
+    }else{
+      $('#name').addClass("valid");
+      Meteor.call("userNameExist",newCoworker_name,(err)=>{
+        if(err){
+          alert(err.reason);
+        }
+        else{
+          Projects.update({_id : Router.current().params._id }, {$push:{ participants: {username: newCoworker_name,right: newCoworker_right}}});
+        }
+      });
+    }
   },
 });
 

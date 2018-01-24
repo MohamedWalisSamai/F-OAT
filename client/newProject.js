@@ -40,6 +40,11 @@ Template.newproject.events({
               rigth: 'Read'});
             }//endfor
 
+        for(var i=0; i<_participant.length;i++){
+          _participant2.push({username: _participant[i],
+          right: 'Read'});
+        }
+
         var _url = 'error';
 
         //If we give an URL for the project
