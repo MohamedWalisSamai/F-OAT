@@ -34,10 +34,11 @@ Template.newproject.events({
 
         var _participant2 = [];
 
-        for(var i=0; i<_participant.length;i++){
-          _participant2.push({username: _participant[i],
-          rigth: 'Read'});
-        }
+        if (participant =! [])
+          for(var i=0; i<_participant.length;i++){
+            _participant2.push({username: _participant[i],
+              rigth: 'Read'});
+            }//endfor
 
         var _url = 'error';
 
