@@ -14,10 +14,10 @@ Template.newproject.helpers({
   errorClass: function(field){
     return !!Session.get('pos tSubmitErrors')[field] ? 'has-error' : '';
   },
-     users(){
-        var regexp = new RegExp(Session.get('search/keyword'), 'i');
-        return Meteor.users.find({username: regexp});
-     }
+   users(){
+      var regexp = new RegExp(Session.get('search/keyword'));
+      return Meteor.users.find({username: regexp});
+   }
 });
 
 Template.newproject.events({
@@ -32,7 +32,12 @@ Template.newproject.events({
         /*var _participant = $('.participant').val();*/
         var _participant = $('#participant').val();
 
-        console.log(_participant);
+        var _participant2 = [];
+
+        for(var i=0; i<_participant.length;i++){
+          _participant2.push({username: _participant[i],
+          rigth: 'Read'});
+        }
 
         var _url = 'error';
 
@@ -55,7 +60,7 @@ Template.newproject.events({
             name: _projectName,
             owner: ownerId.username,
             url: _url,
-            participants:_participant,
+            participants:_participant2,
             notifications:[]
         };
 
