@@ -1,0 +1,14 @@
+<template name="notifications">
+  <div class="notifications">
+    {{#each notifications}}
+      {{> notification}}
+    {{/each}}
+  </div>
+</template>
+
+<template name="notification">
+  <div class="notification">
+    {{date}} : {{value}}
+    <button class="waves-effect waves-light btn-small blue darken-4" id="read">Mark as read</button>
+  </div>
+</template>
