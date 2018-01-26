@@ -64,6 +64,7 @@ main {
 .select{
   display: block;
   width: 400px;
+  min-height: 200px;
 }
 
 .errors{
