@@ -21,7 +21,8 @@ Template.register.events({
       password: _password,
       test: "test",
       profile: {
-        projects:[]
+        projects:[],
+        extractors:[]
       }
 
     }

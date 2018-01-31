@@ -1,7 +1,7 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
-import { Parser } from '../lib/components/Parser.js'
-import { Writer } from '../lib/components/Writer.js'
+import { Parser } from '../../../../lib/components/Parser.js'
+import { Writer } from '../../../../lib/components/Writer.js'
 import './project.html';
 
 // browse the Xml and add the input to the form with the data from the xml

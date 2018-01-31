@@ -1,61 +1,9 @@
-import {Projects} from '../lib/collections/Project.js';
+import {Projects} from '../../lib/collections/Project.js';
 
+/**
+methods callable from the client relative to the team of a project
+*/
 Meteor.methods({
-  createFile: function({project, buffer}){
-    //Write the file on server
-    var fs = Npm.require("fs");
-    //var dir = "/tmp/"+project._id;
-    var dir = "/tmp/"+project.owner+project.name;
-
-    //Create a directory for the project if it doesn't exist
-    if (!fs.existsSync(dir)){
-      fs.mkdirSync(dir);
-    }
-
-    //By default, write file in .meteor/local/build/programs/server/ but we write in tmp.
-    fs.writeFile(dir+"/"+project.url, buffer, 'base64', function(err) {
-      if(err) {
-        throw (new Meteor.Error(500, 'Failed to save file.', err));
-      }
-      else{
-        console.log("File saved successfully!");
-      }
-    });
-
-    fs.writeFile(dir+"/"+"annotation.xml","",function(err){
-      if(err) {
-        throw (new Meteor.Error(500, 'Failed to save file.', err));
-      }
-      else{
-        console.log("File saved successfully!");
-      }
-    });
-
-  },
-
-  createXMLFile: function(project){
-    var fs = Npm.require("fs");
-    //  var dir = "/tmp/"+project._id;
-    var dir = "/tmp/"+project.owner+project.name;
-
-    if (!fs.existsSync(dir)){
-      fs.mkdirSync(dir);
-    }
-
-    fs.writeFile(dir+"/"+"annotation.xml","",function(err){
-      if(err) {
-        throw (new Meteor.Error(500, 'Failed to save file.', err));
-      }
-      else{
-        console.log("File saved successfully!");
-      }
-    });
-  },
-
-  //Function that insert a project in db and returns the id of the inserted project
-  saveDocument: function(project){
-    return Projects.insert(project);
-  },
 
   removeParticipants: (_projectId,_username)=>{
 
@@ -68,10 +16,9 @@ Meteor.methods({
       console.log(project),
       Projects.update({_id:_projectId}, {$pull:{participants: {username: _username}}},(err,result)=>{
         if(err){
-          console.log("erreur");
+          throw Error("impossible to update project");
         }else{
-          console.log(result);
-          console.log(project);
+
         }
       });
     }
@@ -115,8 +62,8 @@ Meteor.methods({
         });
         return 2;
       }else{// basic right change
-        Projects.update({_id: _projectId ,"participants.username": _username},{$set: {"participants.$.right":_newRight}})
-        console.log(project.participants);
+        Projects.update({_id: _projectId ,"participants.username": _username},{$set: {"participants.$.right":_newRight}});
+
         return 1;
       }
     }
