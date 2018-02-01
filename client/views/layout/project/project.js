@@ -60,7 +60,7 @@ function browseXml(xml, iNode, parentNode){
 
 Template.project.onRendered(()=>{
   var xml;
-  Meteor.call("getXml","/workspace/meteor/F-OAT/server/xmlFiles/mix_format.xml",(err,result)=>{
+  Meteor.call("getXml","/home/boby/Documents/M1/F-OAT/server/xmlFiles/mix_format.xml",(err,result)=>{
     if(err){
       alert(err.reason);
     }else{
