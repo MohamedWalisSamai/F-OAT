@@ -1,3 +1,4 @@
+
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { Parser } from '../../../../lib/components/Parser.js'
@@ -33,13 +34,13 @@ function browseXml(xml, iNode, parentNode){
 
         if($(xml).children().length == 0){
           li = '<li><label>text</label><input  id="' + nodeName + '" type="text" value="' + nodeValue + '"></li>'
-          $('#' + iNode).append(li)
+          $('#' + iNode).append(li);
         }
 
         $(e0.attributes).each(function(i,e1){
           //console.log("idNode",idNode)
-          attrName = e1.name
-          attrValue = e1.value
+          attrName = e1.name;
+          attrValue = e1.value;
           //console.log("attrName", attrName)
           //console.log("attrVal", attrValue)
           li = '<li><label> ' +  attrName + '</label>'
@@ -60,6 +61,7 @@ function browseXml(xml, iNode, parentNode){
 
 Template.project.onRendered(()=>{
   var xml;
+  console.log(Router.current().params._id);
   Meteor.call("getXml","/home/boby/Documents/M1/F-OAT/server/xmlFiles/mix_format.xml",(err,result)=>{
     if(err){
       alert(err.reason);
