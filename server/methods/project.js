@@ -1,12 +1,7 @@
-<<<<<<< HEAD
 
 import {Projects} from '../../lib/collections/Project.js';
 var crypto = require('crypto');
 
-=======
-import {Projects} from '../../lib/collections/Project.js';
-var crypto = require('crypto');
->>>>>>> 3e282975aa73a30a9b62dee9146bb22727125e18
 
 /**
 Method callable from the client for a project
