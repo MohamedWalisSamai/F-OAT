@@ -1,6 +1,7 @@
 
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
+import { Form } from '../../../../lib/components/Form.js'
 import { Parser } from '../../../../lib/components/Parser.js'
 import { Writer } from '../../../../lib/components/Writer.js'
 import './project.html';
@@ -73,74 +74,51 @@ Template.project.onRendered(()=>{
 Template.project.events({
   // temporary event which links and XMLForm
   'change #listFrame'(event,instance){
-    var parser = new Parser(Session.get('xmlDoc'))
     //console.log('getFrame',parser.getFrame($('#listFrame').val()))
+    $('#XMLTab').empty()
     $('#XMLForm').empty()
-    browseXml(parser.getFrame($('#listFrame').val()), 1, '#XMLForm')
+    console.log('getFrame',Parser.getFrame(Session.get('xmlDoc'),$('#listFrame').val()))
+    Form.browseXml(Parser.getFrame(Session.get('xmlDoc'),$('#listFrame').val()), 1, '#XMLTab', '#XMLForm')
   },
 
   // show or hide the attributes and the children of the element
-  'click .XMLButton'(event, instance){
+  'click .tab'(event, instance){
+    var id = event.target.id
 
-    var elm = $(document).find('ul[id="' + $(event.target).attr('link') + '"]')
-    var icon = $(event.target).find('i')
-    if($(elm).attr('style') == 'display:none'){
-      $(elm).attr('style','display:block')
-      $(icon).text('keyboard_arrow_down')
-    }
-    else{
-      $(elm).attr('style','display:none')
-      $(icon).text('keyboard_arrow_left')
-    }
-  },
-
-  //TODO fixe XMLButton click and nodeName and add input
-  'click .addNode'(event, instance){
-    var ulElm = event.target.parentNode.parentNode
-    var nodeName = "node name"
-    var link = $(ulElm).attr('id') + "-" + $(ulElm).children('ul').length
-    var newChild = '<li><a href="#" id ="' + nodeName + '" class="XMLButton" link="' + link + '">t<i class="small material-icons">keyboard_arrow_down</i></a></li>'
-
-    newChild += '<ul id="' + link + '" style="display:block">'
-    newChild += '<li><a href="#" class="addAttr">Add attributes to ' + nodeName + '<i class="small material-icons">add_circle</i></a></li></ul>'
-    $(ulElm).children().last().before(newChild)
-  },
-
-  //TODO found and id to input for save the modification
-  'click .addAttr'(event,instance){
-    var ulElm = event.target.parentNode
-    $(ulElm).before('<li><label>attribute name:</label><input type="text"></li>')
-    $(ulElm).before('<li><label>attribute value:</label><input type="text"></li>')
+    $('#XMLForm').children().each(function(i,e){
+    if($(e).attr('id') == 'div' + id){
+          $(e).attr('style','display:block')
+      }else{
+        $(e).attr('style','display:none')
+      }
+    })
   }
-
-
 });
 
 Template.project.helpers({
   test(){
     // N'ayez pas peur de supprimer les lignes suivantes
-    var parser = new Parser(Session.get('xmlDoc'))
-    // parser.getTimelineData()
-    // parser.getFramesActors()
-    parser.getFrame(221)
-    // parser.getShotsActor(0)
-    // parser.getFrames(4725)
-    // parser.getFrames(4726)
-    // parser.getFrames(4727)
-    // parser.getShotFrames(3800)
-    // parser.getActor(1)
-    //parser.getShotsActor(1)
-    // parser.getNbFrames()
-    // parser.getShotFrames(3000)
-    // var id = $(parser.getFramesActors()[0]).attr('refId')
-    // parser.getActor(id)
-    // parser.getNbFrames()
-    // parser.getShotFrames(3149)
-    parser.getMaxIdActor()
-    var writer = new Writer(Session.get('xmlDoc'))
-    //writer.addFrame('<frame timeId="3149"><path>3149</path></frame>')
-    writer.addActor('<actor icon="Actor/Danny.png" id="2" name="Danny" ></actor>')
-    writer.addFrame('<frame timeId="4600"><path>4600.png</path></frame>')
-    //writer.deleteActor(1)
+    // Parser.getTimelineData(Session.get('xmlDoc'))
+    // Parser.getFramesActors(Session.get('xmlDoc'))
+    // Parser.getFrame(Session.get('xmlDoc'),221)
+    // Parser.getShotsActor(Session.get('xmlDoc'),0)
+    // Parser.getFrames(Session.get('xmlDoc'),4725)
+    // Parser.getFrames(Session.get('xmlDoc'),4726)
+    // Parser.getFrames(Session.get('xmlDoc'),4727)
+    // Parser.getShotFrames(Session.get('xmlDoc'),3800)
+    // Parser.getActor(Session.get('xmlDoc'),1)
+    // Parser.getShotsActor(Session.get('xmlDoc'),1)
+    // Parser.getNbFrames(Session.get('xmlDoc'))
+    // Parser.getListTimeId(Session.get('xmlDoc'))
+    // Parser.getShotFrames(Session.get('xmlDoc'),3000)
+    // var id = $(Parser.getFramesActors(Session.get('xmlDoc'))[0]).attr('refId')
+    // Parser.getActor(Session.get('xmlDoc'),id)
+    // Parser.getNbFrames(Session.get('xmlDoc'))
+    // Parser.getShotFrames(Session.get('xmlDoc'),3149)
+    // Parser.getMaxIdActor(Session.get('xmlDoc'))
+    // Writer.addFrame(Session.get('xmlDoc'),'<frame timeId="3149"><path>3149</path></frame>')
+    // Writer.addActor(Session.get('xmlDoc'),'<actor icon="Actor/Danny.png" id="2" name="Danny" ></actor>')
+    // Writer.addFrame(Session.get('xmlDoc'),'<frame timeId="4600"><path>4600.png</path></frame>')
+    // Writer.deleteActor(Session.get('xmlDoc'),1)
   }
 });

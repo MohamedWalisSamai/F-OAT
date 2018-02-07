@@ -1,24 +1,23 @@
 <template name="project">
   {{> notifications}}
   <h2>Faites votre boulot içi ;-)</h2>
-
-  <!-- <a class='dropdown-button btn' href='#' data-activates='dropdown2'>Drop Me!</a>
-  <ul id='dropdown3' class='dropdown-content'>
-  <li><a href="#!">one</a></li>
-  <li><a href="#!">two</a></li>
-  <li class="divider"></li>
-  <li><a href="#!">three</a></li>
-  <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
-  <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
-  </ul> -->
-
-  <label>Frames</label>
-  <select id="listFrame" multiple="multiple" size="1" class="select" >
-    <option>544</option>
-    <option >1152</option>
-    <option>1575</option>
-  </select>
-<form id="XMLForm">
-</form>
+  {{test}}
+  <div class="row">
+    <div class="col s8">
+    <label>Frames</label>
+    <select id="listFrame" class="browser-default">
+      <option>select a frame</option>
+      <option>544</option>
+      <option >1152</option>
+      <option>1575</option>
+    </select>
+  </div>
+  <div class="col s4" >
+    <ul class="tabs" id="XMLTab">
+    </ul>
+  </div>
+  <form class="col s4 offset-s8" id="XMLForm">
+  </form>
+</div>
 <a href="/" class="btn waves-effect waves-light blue darken-4">Exit</a>
 </template>
