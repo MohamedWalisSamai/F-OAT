@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 import {Projects} from '../../lib/collections/Project.js';
 var crypto = require('crypto');
-=======
-  import {Projects} from '../../lib/collections/Project.js';
->>>>>>> 851eadd727718a2bd0fd437137c6cb0a4134480b
 
 /**
 Method callable from the client for a project
@@ -51,14 +47,7 @@ Meteor.methods({
       }
     });
 
-    fs.writeFile(dir+"/"+"annotation.xml","",function(err){
-      if(err) {
-        throw (new Meteor.Error(500, 'Failed to save file.', err));
-      }
-      else{
-        console.log("File saved successfully!");
-      }
-    });
+    createFileXML(project);
 
   },
 
@@ -67,22 +56,7 @@ Meteor.methods({
   @project : the project to wich we want to cretae an xml fime
   */
   createXMLFile: function(project){
-    var fs = Npm.require("fs");
-    //  var dir = "/tmp/"+project._id;
-    var dir = "/tmp/"+project.owner+project.name;
-
-    if (!fs.existsSync(dir)){
-      fs.mkdirSync(dir);
-    }
-
-    fs.writeFile(dir+"/"+"annotation.xml","",function(err){
-      if(err) {
-        throw (new Meteor.Error(500, 'Failed to save file.', err));
-      }
-      else{
-        console.log("File saved successfully!");
-      }
-    });
+    createFileXML(project);
   },
 
   //Function that insert a project in db and returns the id of the inserted project
@@ -90,3 +64,54 @@ Meteor.methods({
     return Projects.insert(project);
   },
 });
+
+createFileXML = function(project){
+  var fs = Npm.require("fs");
+  //  var dir = "/tmp/"+project._id;
+  var dir = "/tmp/"+project.owner+project.name;
+
+  if (!fs.existsSync(dir)){
+    fs.mkdirSync(dir);
+  }
+  var buff = generateContent(project);
+  fs.writeFile(dir+"/"+"annotation.xml",buff,function(err){
+    if(err) {
+      throw (new Meteor.Error(500, 'Failed to save file.', err));
+    }
+    else{
+      console.log("File saved successfully!");
+    }
+  });
+}
+
+
+generateContent = function(project){
+    var builder = require('xmlbuilder');
+    var doc = builder.create('root')
+      .ele('version')
+        .txt('0.1')
+      .up()
+      .ele('project')
+        .att('path','/tmp/'+project.owner+project.name)
+        .ele('icons')
+          .att('path', 'Icons')
+        .up()
+        .ele('video')
+          .att('id','1')
+          .att('path',project.url)
+        .up()
+      .up()
+      .ele('header')
+        .ele('video')
+          .att('fps','25.0')
+          .att('framing','16/9','id=1')
+          .ele('file')
+            .txt('/tmp/'+project.owner+project.name+'/'+project.url)
+          .up()
+        .up()
+      .up()
+      .ele('scenes')
+      .up()
+    .end({ pretty: true });
+    return doc.toString();
+}
