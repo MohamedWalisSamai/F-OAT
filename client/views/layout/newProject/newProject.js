@@ -91,6 +91,7 @@ Template.newproject.events({
                             }
                             else{
                                 //Create a notification if the file has been uploaded
+                                console.log(res);
                                 Projects.update({
                                     _id: res
                                 }, {
@@ -103,6 +104,7 @@ Template.newproject.events({
                     Router.go("/");
                 }
                 else{
+                    console.log(res);
                     Meteor.call('createXMLFile',project,function(error,result){
                       if(error){
                         alert(error.reason);

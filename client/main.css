@@ -31,7 +31,39 @@ h2{
 }
 
 
+.video {
+  margin: 5% auto;
+  background: white;
+  color: black;
 
+}
+
+#container
+{
+    height:100%;
+    width:90%;
+    margin:auto;
+}
+
+#first
+{
+
+    height:50px;
+
+}
+#second
+{
+    float:left;
+    margin-top: 2%;
+    width:40%;
+    height:100%;
+}
+#third
+{
+    float:left;
+    width:60%;
+    height:100%;
+}
 
 .btn{
   display: block;
@@ -60,6 +92,7 @@ body {
 main {
   flex: 1 0 auto;
 }
+
 
 .select{
   display: block;
