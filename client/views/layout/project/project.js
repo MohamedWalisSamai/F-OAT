@@ -1,7 +1,9 @@
+
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { Form } from '../../../../lib/components/Form.js'
 import { Parser } from '../../../../lib/components/Parser.js'
+import { Tool } from '../../../../lib/components/Tool.js'
 import {Projects} from '../../../../lib/collections/Project.js';
 import { Writer } from '../../../../lib/components/Writer.js'
 import './project.html';
@@ -9,12 +11,13 @@ import './project.html';
 Template.project.onRendered(()=>{
   var xml;
   var projectId= Router.current().params._id
+  var path
   // uncomment the line bellow when the createFile method is fixe
   // var path = '/tmp/' + projectId + '/annontation.xml'
 
-  var project = Projects.findOne(projectId)
-  var path = '/tmp/' + project.owner + project.name + '/annotation.xml'
-  // console.log('path', path)
+  // var project = Projects.findOne(projectId)
+  path = 'tmp/' + project.owner + project.name + '/annotation.xml'
+  // path = '/workspace/meteor/F-OAT/server/xmlFiles/mix_format.xml'
 
   Meteor.call("getXml", path ,(err,result)=>{
     if(err){
@@ -50,8 +53,14 @@ Template.project.events({
 
   'click #saveForm'(event,instance){
     var form = $('#XMLForm').children('div')
-    Form.buildXML('#XMLTab', form)
+    result = Form.buildXML('#XMLTab', form)
+
+    result = Tool.convertDocumentToString(result, 0)
+    // TODO fixe <#document>
+
     // call the merge fonction and update the client XML
+    // update the other element
+    //Session.set('xmlDoc', result)
   }
 });
 
