@@ -2,12 +2,21 @@ import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { Form } from '../../../../lib/components/Form.js'
 import { Parser } from '../../../../lib/components/Parser.js'
+import {Projects} from '../../../../lib/collections/Project.js';
 import { Writer } from '../../../../lib/components/Writer.js'
 import './project.html';
 
 Template.project.onRendered(()=>{
   var xml;
-  Meteor.call("getXml","/workspace/meteor/F-OAT/server/xmlFiles/mix_format.xml",(err,result)=>{
+  var projectId= Router.current().params._id
+  // uncomment the line bellow when the createFile method is fixe
+  // var path = '/tmp/' + projectId + '/annontation.xml'
+
+  var project = Projects.findOne(projectId)
+  var path = '/tmp/' + project.owner + project.name + '/annotation.xml'
+  // console.log('path', path)
+
+  Meteor.call("getXml", path ,(err,result)=>{
     if(err){
       alert(err.reason);
     }else{
@@ -22,26 +31,32 @@ Template.project.events({
     $('#XMLTab').empty()
     $('#XMLForm').empty()
     console.log('getFrame',Parser.getFrame(Session.get('xmlDoc'),$('#listFrame').val()))
-    Form.browseXml(Parser.getFrame(Session.get('xmlDoc'),$('#listFrame').val()), 1, '#XMLTab', '#XMLForm')
+    Form.browseXML(Parser.getFrame(Session.get('xmlDoc'),$('#listFrame').val()), 1, '#XMLTab', '#XMLForm')
+    $('#XMLForm').append('<a class="btn waves-effect waves-light blue darken-4 " id="saveForm" name="action">Save </a>')
   },
 
   // show or hide the attributes and the children of the element
   'click .tab'(event, instance){
     var id = event.target.id
 
-    $('#XMLForm').children().each(function(i,e){
+    $('#XMLForm').children('div').each(function(i,e){
     if($(e).attr('id') == 'div' + id){
           $(e).attr('style','display:block')
       }else{
         $(e).attr('style','display:none')
       }
     })
+  },
+
+  'click #saveForm'(event,instance){
+    var form = $('#XMLForm').children('div')
+    Form.buildXML('#XMLTab', form)
+    // call the merge fonction and update the client XML
   }
 });
 
 Template.project.helpers({
   test(){
-    // N'ayez pas peur de supprimer les lignes suivantes
     // Parser.getTimelineData(Session.get('xmlDoc'))
     // Parser.getFramesActors(Session.get('xmlDoc'))
     // Parser.getFrame(Session.get('xmlDoc'),221)
