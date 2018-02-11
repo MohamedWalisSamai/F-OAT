@@ -8,11 +8,11 @@ Meteor.methods({
   Create the xml file of a project
   @project : the project to wich we want to cretae an xml fime
   */
-  createFile: function({project, buffer}){
+  createFile: function(id){
     //Write the file on server
     var fs = Npm.require("fs");
     //var dir = "/tmp/"+project._id;
-    var dir = "/tmp/"+project.owner+project.name;
+    var dir = "/tmp/"+id;
 
     //Create a directory for the project if it doesn't exist
     if (!fs.existsSync(dir)){
@@ -44,10 +44,10 @@ Meteor.methods({
   Create the xml file of a project
   @project : the project to wich we want to cretae an xml fime
   */
-  createXMLFile: function(project){
+  createXMLFile: function(id){
     var fs = Npm.require("fs");
     //  var dir = "/tmp/"+project._id;
-    var dir = "/tmp/"+project.owner+project.name;
+    var dir = "/tmp/"+id;
 
     if (!fs.existsSync(dir)){
       fs.mkdirSync(dir);
