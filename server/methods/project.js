@@ -36,9 +36,9 @@ Meteor.methods({
     });
 
     //Création du hacher avec la foction MD5 en utlilisant les données de la vidéo "buffer"
-    let si = JSON.stringify({signature: crypto.createHash('sha1').update(buffer).digest("hex")});
+    let si = JSON.stringify({signature: crypto.createHash('md5').update(buffer).digest("hex")});
     //Creation du fichier pour la signature des videos
-    fs.writeFile(dirSi+"/"+project.name+ ".json", si, function(err) {
+    fs.writeFile(dirSi+"/"+id+ ".json", si, function(err) {
       if(err) {
         throw (new Meteor.Error(500, 'Failed to save file.', err));
       }
