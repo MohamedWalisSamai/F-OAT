@@ -8,7 +8,7 @@ Meteor.methods({
   Create the xml file of a project
   @project : the project to wich we want to cretae an xml fime
   */
-  createFile: function(id){
+  createFile: function({id,buffer}){
     //Write the file on server
     var fs = Npm.require("fs");
     //var dir = "/tmp/"+project._id;
