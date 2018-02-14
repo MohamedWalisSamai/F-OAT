@@ -85,7 +85,7 @@ Template.newproject.events({
 
                         var buffer = reader.result;
                         //Call a method from project.js on server side
-                        Meteor.call('createFile', {project,buffer}, function(error, result){
+                        Meteor.call('createFile', {res,buffer}, function(error, result){
                             if(error){
                                 alert(error.reason);
                             }
@@ -105,7 +105,7 @@ Template.newproject.events({
                 }
                 else{
                     console.log(res);
-                    Meteor.call('createXMLFile',project,function(error,result){
+                    Meteor.call('createXMLFile',res,function(error,result){
                       if(error){
                         alert(error.reason);
                       }

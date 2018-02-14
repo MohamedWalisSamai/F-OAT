@@ -11,11 +11,11 @@ Meteor.methods({
   Create the xml file of a project
   @project : the project to wich we want to cretae an xml fime
   */
-  createFile: function({project, buffer}){
+  createFile: function({id, buffer}){
     //Write the file on server
     var fs = Npm.require("fs");
     //var dir = "/tmp/"+project._id;
-    var dir = "/tmp/"+project.owner+project.name;
+    var dir = "/tmp/"+id;
     var dirSi = "/tmp/signature";
 
     //Create a directory for the project if it doesn't exist
@@ -49,7 +49,7 @@ Meteor.methods({
       }
     });
 
-    createFileXML(project);
+    createFileXML(id);
 
   },
 
@@ -57,8 +57,8 @@ Meteor.methods({
   Create the xml file of a project
   @project : the project to wich we want to cretae an xml fime
   */
-  createXMLFile: function(project){
-    createFileXML(project);
+  createXMLFile: function(id){
+    createFileXML(id);
   },
 
   //Function that insert a project in db and returns the id of the inserted project
@@ -67,15 +67,15 @@ Meteor.methods({
   },
 });
 
-createFileXML = function(project){
+createFileXML = function(id){
   var fs = Npm.require("fs");
   //  var dir = "/tmp/"+project._id;
-  var dir = "/tmp/"+project.owner+project.name;
+  var dir = "/tmp/"+id;
 
   if (!fs.existsSync(dir)){
     fs.mkdirSync(dir);
   }
-  var buff = generateContent(project);
+  var buff = generateContent(Projects.findOne({_id: id}));
   fs.writeFile(dir+"/"+"annotation.xml",buff,function(err){
     if(err) {
       throw (new Meteor.Error(500, 'Failed to save file.', err));
@@ -94,7 +94,7 @@ generateContent = function(project){
         .txt('0.1')
       .up()
       .ele('project')
-        .att('path','/tmp/'+project.owner+project.name)
+        .att('path','/tmp/'+project._id)
         .ele('icons')
           .att('path', 'Icons')
         .up()
@@ -108,7 +108,7 @@ generateContent = function(project){
           .att('fps','25.0')
           .att('framing','16/9','id=1')
           .ele('file')
-            .txt('/tmp/'+project.owner+project.name+'/'+project.url)
+            .txt('/tmp/'+project._id+'/'+project.url)
           .up()
         .up()
       .up()
